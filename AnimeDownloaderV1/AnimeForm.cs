@@ -19,7 +19,6 @@ using WebDriverManager;
 using WebDriverManager.DriverConfigs.Impl;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Edge;
 using AngleSharp.Dom;
 using System.Security.Policy;
 using OpenQA.Selenium.Firefox;
@@ -49,7 +48,20 @@ namespace VideoDownloaderV1
         }
 
         private void AnimeForm_Load(object sender, EventArgs e)
-        {               
+        {
+            for (int i = 0; i < 5 + 1; i++)
+            {
+                if (i == 0) openChrome("https://9anime.tube/watch/detective-conan/?ep=" + i); //to acts as buffer testing it still                
+                else
+                {
+                    driver.SwitchTo().NewWindow(WindowType.Tab);
+                    driver.Navigate().GoToUrl("https://9anime.tube/watch/detective-conan/?ep=" + i);
+                    Thread.Sleep(500);
+                    driver.Close();
+                    driver.SwitchTo().Window(driver.WindowHandles[0]); //seems reduntant but needed
+                }                
+            }
+
             AnimeLink_TextBox.Text = "https://9anime.tube/watch/detective-conan/";
             Start_TextBox.Text = "1002";
             End_TextBox.Text = "1057";
@@ -62,7 +74,7 @@ namespace VideoDownloaderV1
 
             for (int i = start; i <= end; i++)
             {
-                openEdge(AnimeLink_TextBox.Text + "?ep=" + i.ToString());
+                openChrome(AnimeLink_TextBox.Text + "?ep=" + i.ToString());
                 Thread.Sleep(5000);
 
                 if (AnimeLink_TextBox.Text.Contains("9anime"))
@@ -183,17 +195,17 @@ namespace VideoDownloaderV1
             Thread.Sleep(delayMS);
         }
 
-        private void openEdge(string URL)
+        private void openChrome(string URL)
         {
-            var options = new EdgeOptions();
-
+            var options = new ChromeOptions();
+            //options.PageLoadStrategy = PageLoadStrategy.None; //so as to not wait for page to load to continue
             options.AddExtension(@"uBlock-Origin.crx");
 
-            new DriverManager().SetUpDriver(new EdgeConfig());
-            var chromeDriverService = EdgeDriverService.CreateDefaultService();
+            new DriverManager().SetUpDriver(new ChromeConfig());
+            var chromeDriverService = ChromeDriverService.CreateDefaultService();
             chromeDriverService.HideCommandPromptWindow = true;
 
-            driver = new EdgeDriver(chromeDriverService, options);            
+            driver = new ChromeDriver(chromeDriverService, options);            
             driver.Navigate().GoToUrl(URL); 
         }
 
