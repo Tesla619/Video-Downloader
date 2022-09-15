@@ -36,12 +36,16 @@
             this.Start_TextBox = new System.Windows.Forms.TextBox();
             this.End_TextBox = new System.Windows.Forms.TextBox();
             this.End_Label = new System.Windows.Forms.Label();
+            this.UserEmail_Label = new System.Windows.Forms.Label();
+            this.Custom_Button = new System.Windows.Forms.Button();
+            this.Email_TextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // Start_Button
             // 
+            this.Start_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Start_Button.Location = new System.Drawing.Point(603, 6);
-            this.Start_Button.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.Start_Button.Margin = new System.Windows.Forms.Padding(8);
             this.Start_Button.Name = "Start_Button";
             this.Start_Button.Size = new System.Drawing.Size(104, 94);
             this.Start_Button.TabIndex = 0;
@@ -52,7 +56,7 @@
             // AnimeLink_TextBox
             // 
             this.AnimeLink_TextBox.Location = new System.Drawing.Point(193, 6);
-            this.AnimeLink_TextBox.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.AnimeLink_TextBox.Margin = new System.Windows.Forms.Padding(8);
             this.AnimeLink_TextBox.Name = "AnimeLink_TextBox";
             this.AnimeLink_TextBox.Size = new System.Drawing.Size(394, 40);
             this.AnimeLink_TextBox.TabIndex = 1;
@@ -101,11 +105,42 @@
             this.End_Label.TabIndex = 6;
             this.End_Label.Text = "Ending Ep";
             // 
+            // UserEmail_Label
+            // 
+            this.UserEmail_Label.AutoSize = true;
+            this.UserEmail_Label.Location = new System.Drawing.Point(17, 118);
+            this.UserEmail_Label.Name = "UserEmail_Label";
+            this.UserEmail_Label.Size = new System.Drawing.Size(159, 33);
+            this.UserEmail_Label.TabIndex = 7;
+            this.UserEmail_Label.Text = "User Email";
+            // 
+            // Custom_Button
+            // 
+            this.Custom_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Custom_Button.Location = new System.Drawing.Point(603, 111);
+            this.Custom_Button.Name = "Custom_Button";
+            this.Custom_Button.Size = new System.Drawing.Size(104, 40);
+            this.Custom_Button.TabIndex = 8;
+            this.Custom_Button.Text = "Custom";
+            this.Custom_Button.UseVisualStyleBackColor = true;
+            this.Custom_Button.Click += new System.EventHandler(this.Custom_Button_Click);
+            // 
+            // Email_TextBox
+            // 
+            this.Email_TextBox.Location = new System.Drawing.Point(193, 111);
+            this.Email_TextBox.Margin = new System.Windows.Forms.Padding(8);
+            this.Email_TextBox.Name = "Email_TextBox";
+            this.Email_TextBox.Size = new System.Drawing.Size(394, 40);
+            this.Email_TextBox.TabIndex = 9;
+            // 
             // AnimeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(17F, 33F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(720, 115);
+            this.ClientSize = new System.Drawing.Size(720, 165);
+            this.Controls.Add(this.Email_TextBox);
+            this.Controls.Add(this.Custom_Button);
+            this.Controls.Add(this.UserEmail_Label);
             this.Controls.Add(this.End_Label);
             this.Controls.Add(this.End_TextBox);
             this.Controls.Add(this.Start_TextBox);
@@ -116,7 +151,7 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.Margin = new System.Windows.Forms.Padding(8);
             this.MaximizeBox = false;
             this.Name = "AnimeForm";
             this.Text = "Anime Downloader";
@@ -136,6 +171,9 @@
         private System.Windows.Forms.TextBox Start_TextBox;
         private System.Windows.Forms.TextBox End_TextBox;
         private System.Windows.Forms.Label End_Label;
+        private System.Windows.Forms.Label UserEmail_Label;
+        private System.Windows.Forms.Button Custom_Button;
+        private System.Windows.Forms.TextBox Email_TextBox;
     }
 }
 
